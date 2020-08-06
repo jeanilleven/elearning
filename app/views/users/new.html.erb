@@ -1,0 +1,27 @@
+<% provide(:title, 'Sign Up')%>
+
+<div class="form">
+    <div class="container mt-4" style="width: 50%; ">
+        <h1 class="text-center">Sign up</h1>
+        <%= form_for(@user) do |f| %>
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control"%>
+            <br>
+            <%= f.label :email %>
+            <%= f.text_field :email, class: "form-control"%>
+            <br>
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "form-control"%>
+            <br>
+            <%= f.label :password_confirmation, "Confirmation" %>
+            <%= f.password_field :password_confirmation, class: "form-control"%>
+            <br>
+            <%= f.label "Register as Admin" %>
+            <%= f.check_box :isAdmin %>
+            <br>
+            <%= f.submit "Create my account", class: "btn btn-block btn-primary", style: "width: 35%; margin: auto"%>
+        <%end%>
+        <br>
+        <p>Have an account? <%#= link_to "Log in here!", login_path %></p>
+    </div>
+</div>
