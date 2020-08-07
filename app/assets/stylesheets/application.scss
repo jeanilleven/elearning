@@ -13,14 +13,43 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
-@import "font-awesome";
-
-.navbutton{
-    border-radius: 5px;
-}
-
-.btn-info:hover{
-    background-color: white !important;
-    color: blue !important
-}
+ @import "bootstrap";
+ @import "font-awesome";
+ 
+ $blue: #c2e4e6;
+ $darkblue: #4f7779;
+ $taupe: #898b80;
+ $cream: #e8e098;
+ $gray: #e8e098;
+ 
+ 
+ .navbutton{
+     border-radius: 5px;
+ }
+ 
+ .nav-item{
+    margin: 10px;
+ }
+ 
+ .btn-info{
+     background-color: $darkblue !important;
+     color: $blue !important;
+ }
+ 
+ .btn-info:hover{
+     background-color: white !important;
+     color: $darkblue !important
+ }
+ 
+ .navbar{
+     background-color: $darkblue !important;
+ }
+ 
+ .userbutton{
+     background-color: $blue !important;
+     color: $darkblue !important;
+ }
+ 
+ .dropdown-item{
+     color: $darkblue !important;
+ }

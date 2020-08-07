@@ -1,4 +1,7 @@
 <% provide(:title, 'Home') %>
 
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<% if logged_in? %>
+    <h3>Hello, <%= current_user.name %></h3>
+<%else%>
+    <h3>Log in first :) </h3>
+<%end%>

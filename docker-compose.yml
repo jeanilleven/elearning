@@ -17,7 +17,7 @@ services:
     volumes:
       - .:/elearning
     ports:
-      - "8080:3000"
+      - "4000:3000"
     depends_on:
       - db
     environment:
