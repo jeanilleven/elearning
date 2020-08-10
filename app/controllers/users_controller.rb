@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 9)
+    if !logged_in?
+      redirect_to login_url
+    else
+      @users = User.paginate(page: params[:page], per_page: 9)
+    end
   end
 
   def new
