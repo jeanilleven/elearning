@@ -1,3 +1,34 @@
-<% provide(title: "Index")%>
+<% provide(:title, "Users")%>
 
-<h1>You have successfully created an account</h1>
+<div class="jumbotron mt-2">
+    <h3 class='text-center usersheader'>List of Users</h3>
+    <div class='d-flex justify-content-center'>
+        <%= will_paginate @users %>
+    </div>
+
+    <ul class="userlist">
+        <div class="row">
+            <% @users.each do |user| %>
+                <div class="col-lg-4 col-sm-12 d-flex justify-content-center">
+                    <li class="user">
+                        <div class="row">
+                            <div class="col-2 d-flex justify-content-center">
+                                <% if user.avatar.nil? %>
+                                    <%= link_to image_tag("dp.png"), user_path(user), class: "dp"%>
+                                <%end%>
+                            </div>
+                            <div class="col-7 user-name d-flex justify-content-left">
+                                <h5><%=user.name%></h5>
+                            </div>
+                            <div class="col-3 user-add-btn">
+                                <%if current_user.isAdmin %>
+                                    <button class="navbutton btn-info">Add</button>
+                                <%end%>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            <%end%>
+        </div>
+    </ul>
+</div>
