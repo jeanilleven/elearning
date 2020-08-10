@@ -34,6 +34,7 @@
 .btn-info{
   background-color: $darkblue !important;
   color: $blue !important;
+  border: 2px solid $darkblue !important;
 }
  
 .btn-info:hover{
@@ -52,4 +53,44 @@
  
 .dropdown-item{
   color: $darkblue !important;
+}
+
+.jumbotron{
+  background-color: $blue !important;
+}
+
+.usersheader{
+  color: $darkblue;
+}
+
+.userlist{
+  list-style-type: none;
+  padding: 0;
+}
+
+.userlist li{
+  display: inline-block;
+}
+
+.user{
+  width: 100%;
+  background-color: white;
+  color: $darkblue;
+  border-radius: 15px;
+  padding: 25px;
+  margin:10px;
+}
+
+.dp img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-top: auto;
+  margin-bottom: auto;  
+}
+
+.user-name{
+  margin-top: auto;
+  margin-bottom: auto;
+  border: none
 }
