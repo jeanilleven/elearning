@@ -14,10 +14,26 @@
             </div>
         </div>
         <div class="col-lg-6 col-sm-12">
-
         </div>
     </div>
     
 <%else%>
-    <h3>Log in first :) </h3>
+    <div class="row mt-4" style="padding: 20px">
+        <div class="col-lg-8 col-sm-12" style="margin-top: auto; margin-bottom: auto;">
+            <%= image_tag("student.png", class: "home-pic")%>
+        </div>
+        <div class='col-lg-4 col-sm-12 d-flex justify-content-center'>
+            <div class="card mt-2" style="width: 18rem;">
+                <div class="card-body" style="text-align: center">
+                    <h5 class="card-title" style="color: #4f7779;">
+                        E-Learning System
+                    </h5>
+                    <p class="card-text" style="color: #4f7779;">
+                        Wisdom comes not from age, but from education and learning.
+                    </p>
+                    <%= image_tag("home-student-card.png", class: "card-pic")%>
+                </div>
+            </div>
+        </div>
+    </div>
 <%end%>
