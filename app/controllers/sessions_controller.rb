@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to root_url
     else 
+      flash[:danger] = "Invalid Credentials."
       render 'new'
     end
 
@@ -20,6 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
+    flash[:success] = "You have successfully logged out!"
     redirect_to root_url
   end
 end
