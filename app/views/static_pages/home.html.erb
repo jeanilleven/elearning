@@ -1,7 +1,23 @@
 <% provide(:title, 'Home') %>
 
 <% if logged_in? %>
-    <h3>Hello, <%= current_user.name %></h3>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <div class="card mt-2 profile-card" style="width: 18rem;">
+                <%= user_avatar(@current_user, "profile-pic") %>
+                <div class="card-body" style="text-align: center">
+                    <h5 class="card-title">
+                        <%= current_user.name %>
+                    </h5>
+                    <p class="card-text"><%= current_user.email %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+
+        </div>
+    </div>
+    
 <%else%>
     <h3>Log in first :) </h3>
 <%end%>

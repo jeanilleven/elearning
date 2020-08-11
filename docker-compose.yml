@@ -8,8 +8,8 @@ services:
     environment:
       - MYSQL_DATABASE=elearning_db
       - MYSQL_ROOT_PASSWORD=password
-    volumes:
-      - ./data:/var/lib/mysql:rw
+    # volumes:
+    #   - ./data:/var/lib/mysql:rw
     command: --innodb_use_native_aio=0
   web:
     build: .

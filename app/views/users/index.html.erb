@@ -13,9 +13,7 @@
                     <li class="user">
                         <div class="row">
                             <div class="col-2 d-flex justify-content-center">
-                                <% if user.avatar.nil? %>
-                                    <%= link_to image_tag("dp.png"), user_path(user), class: "dp"%>
-                                <%end%>
+                                <%= link_to user_avatar(user, "dp"), user_path(user.id) %>
                             </div>
                             <div class="col-7 user-name d-flex justify-content-left">
                                 <h5><%=user.name%></h5>

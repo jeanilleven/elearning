@@ -1,0 +1,23 @@
+<div class="container mt-4" style="width: 50%; ">
+    <h3 class="text-center">Edit Profile</h3>
+    <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages',object: f.object %>
+        <div class='d-flex justify-content-center'>
+            <%= f.file_field :avatar, accept: "image/jpeg, image/gif, image/png" %>
+        </div>
+        <br>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control"%>
+        <br>
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control"%>
+        <br>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control"%>
+        <br>
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: "form-control"%>
+        <br>
+        <%= f.submit "Update Profile", class: "btn btn-block btn-primary", style: "width: 35%; margin: auto"%>
+    <%end%>
+</div>

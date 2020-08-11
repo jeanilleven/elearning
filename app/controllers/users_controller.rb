@@ -16,17 +16,38 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to signup_url
+      flash[:success] = "Welcome to E-learning! You have successfully created an account."
+      redirect_to root_url
     else
       render 'new'
     end
   end
 
   def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find(params[:id])
+    if current_user.id != @user.id
+      flash[:danger] = "You cannot edit this profile."
+      redirect_to user_url(@user.id)
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update(user_params)
+      flash[:success] = "You have successfully updated your profile. "
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
   end
 end
