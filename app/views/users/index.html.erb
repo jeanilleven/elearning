@@ -1,6 +1,6 @@
-<% provide(:title, "Users")%>
+<% provide(:title, "Users") %>
 
-<div class="jumbotron mt-2" style="padding: 30px;">
+<div class="jumbotron mt-2">
     <h3 class='text-center usersheader'>List of Users</h3>
     <div class='d-flex justify-content-center'>
         <%= will_paginate @users %>
@@ -16,12 +16,12 @@
                                 <%= link_to user_avatar(user, "dp"), user_path(user.id) %>
                             </div>
                             <div class="col-7 user-name d-flex justify-content-left">
-                                <h5><%=user.name%></h5>
+                                <h5><%= user.name %></h5>
                             </div>
                         </div>
                     </li>
                 </div>
-            <%end%>
+            <% end %>
         </div>
     </ul>
 </div>

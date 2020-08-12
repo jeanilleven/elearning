@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_action :correct_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update]
+
   def index
     if !logged_in?
       redirect_to login_url
@@ -29,10 +32,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    if current_user.id != @user.id
-      flash[:danger] = "You cannot edit this profile."
-      redirect_to user_url(@user.id)
-    end
   end
 
   def update
@@ -47,7 +46,15 @@ class UsersController < ApplicationController
   end
 
   private
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
-  end
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
+    end
+
+    def correct_user 
+      @user = User.find(params[:id])
+      if current_user.id != @user.id
+        flash[:danger] = "You cannot edit this profile."
+        redirect_to user_url(@user.id)
+      end
+    end
 end

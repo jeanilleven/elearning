@@ -1,39 +1,20 @@
 <% provide(:title, 'Home') %>
 
-<% if logged_in? %>
-    <div class="row">
-        <div class="col-lg-6 col-sm-12">
-            <div class="card mt-2 profile-card" style="width: 18rem;">
-                <%= user_avatar(@current_user, "profile-pic") %>
-                <div class="card-body" style="text-align: center">
-                    <h5 class="card-title">
-                        <%= current_user.name %>
-                    </h5>
-                    <p class="card-text"><%= current_user.email %></p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-sm-12">
-        </div>
+<div class="row mt-4 home-row">
+    <div class="col-lg-8 col-sm-12 vertical-align-center">
+        <%= image_tag("student.png", class: "home-pic") %>
     </div>
-    
-<%else%>
-    <div class="row mt-4" style="padding: 20px">
-        <div class="col-lg-8 col-sm-12" style="margin-top: auto; margin-bottom: auto;">
-            <%= image_tag("student.png", class: "home-pic")%>
-        </div>
-        <div class='col-lg-4 col-sm-12 d-flex justify-content-center'>
-            <div class="card mt-2" style="width: 18rem;">
-                <div class="card-body" style="text-align: center">
-                    <h5 class="card-title" style="color: #4f7779;">
-                        E-Learning System
-                    </h5>
-                    <p class="card-text" style="color: #4f7779;">
-                        Wisdom comes not from age, but from education and learning.
-                    </p>
-                    <%= image_tag("home-student-card.png", class: "card-pic")%>
-                </div>
+    <div class='col-lg-4 col-sm-12 d-flex justify-content-center'>
+        <div class="card mt-2">
+            <div class="card-body text-align-center">
+                <h5 class="card-title text-darkblue">
+                    E-Learning System
+                </h5>
+                <p class="card-text text-darkblue">
+                    Wisdom comes not from age, but from education and learning.
+                </p>
+                 <%= image_tag("home-student-card.png", class: "card-pic") %>
             </div>
         </div>
     </div>
-<%end%>
+</div>
