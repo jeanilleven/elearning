@@ -1,0 +1,9 @@
+<div class="card mt-2 profile-card">
+    <div class="card-body text-align-center">
+        <%= user_avatar(@user, "profile-pic") %>
+        <h5 class="card-title">
+            <%= @user.name %>
+        </h5>
+        <p class="card-text"><%= @user.email %></p>
+    </div>
+</div>
