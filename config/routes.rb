@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   resources :sessions, only: [:new, :create, :destroy]
 
+  #For the follow and unfollow function
+  resources :relationships, only: [:create, :destroy]
+
 end

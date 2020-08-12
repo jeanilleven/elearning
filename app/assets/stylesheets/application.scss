@@ -20,8 +20,6 @@
  $darkblue: #4f7779;
  $taupe: #898b80;
  $cream: #e8e098;
- $gray: #e8e098;
- 
  
 .navbutton{
   border-radius: 5px;
@@ -61,6 +59,18 @@
 .btn-info:hover, .btn-primary:hover{
   background-color: white !important;
   color: $darkblue !important
+}
+
+.btn-warning{
+  border: 2px solid #ffee55;
+  background-color: #ffee55;
+  color: #9c9662
+}
+
+.btn-warning:hover{
+  color: #ffee55 !important;
+  background-color: white !important;
+  border: 2px solid #ffee55;
 }
 
 .page-link{
@@ -165,3 +175,4 @@
 .width-50{
   width: 50%; 
 }
+
