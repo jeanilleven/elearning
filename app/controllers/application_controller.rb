@@ -7,4 +7,11 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def admin_only
+    if !current_user.isAdmin
+      flash[:danger] = "You are not authorized to access the admin dashboard."
+      redirect_to user_url(current_user.id)
+    end
+  end
 end

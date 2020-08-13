@@ -1,0 +1,29 @@
+<% provide(:title, "Administration") %>
+
+<div class="jumbotron mt-4 vertical-alignment-center">
+    <div class="row">
+        <div class="col-6 d-flex justify-content-center">
+            <div class="card">
+                <img class="card-img-top" src="https://static.parade.com/wp-content/uploads/2017/12/organized-during-cancer-FEAT.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">You can create and edit categories that include all words, all choices, selecting which answer is the correct or not.</p>
+                </div>
+                <a href="#" class="btn btn-primary">Categories</a>
+            </div>
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <div class="card">
+                <img class="card-img-top" src="https://pictures.castleford.com.au/x_0_0_0_14116418_800.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">You can administrate all users as the administrator, controlling users to delete from users list and esp selecting which users are the administrators or not.</p>
+                </div>
+                <a href="#" class="btn btn-primary">Users</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <%= link_to "Back", user_path(current_user.id), class: "btn btn-warning" %>
+        </div>
+    </div>
+</div>

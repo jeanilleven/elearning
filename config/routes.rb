@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get '/home', to: 'static_pages#home', as: 'home'
+  end
+
   #static pages
   root 'static_pages#home'
   get 'about', to: 'static_pages#about'
