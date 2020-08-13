@@ -24,3 +24,19 @@ User.create!(
     password_confirmation: password,
     isAdmin: "0")
 end
+
+#FOLLOW
+users = User.all
+user = users.first
+
+#User1 will follow User2 until User50
+following = users[2..50]
+
+#User1 has followers starting from User3 to User30
+followers = users[3..30]
+
+#User1 will follow (following = users[2..50])
+following.each{|followed| user.follow(followed)}
+
+#User1's followers will be (followers = user[3..30])
+followers.each{|follower| follower.follow(user)}

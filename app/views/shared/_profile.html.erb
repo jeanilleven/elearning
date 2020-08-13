@@ -1,3 +1,5 @@
+<% provide(:title, @user.name) %>
+
 <div class="card mt-2 profile-card">
     <div class="card-body text-align-center">
         <%= user_avatar(@user, "profile-pic") %>
@@ -5,5 +7,15 @@
             <%= @user.name %>
         </h5>
         <p class="card-text"><%= @user.email %></p>
+        <%= render 'users/follow_form' if logged_in? %>
     </div>
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="card-text d-flex justify-content-center">
+                <strong id="followers"><%= @user.followers.count %></strong>&nbsp;Followers&nbsp;|&nbsp; 
+                <strong><%= @user.followed_users.count %></strong>&nbsp;Following
+            </div>
+        </li>
+    </ul>
 </div>
