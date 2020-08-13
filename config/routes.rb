@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get '/home', to: 'static_pages#home', as: 'home'
+    get '/home', to: 'static_pages#home'
+
+    get '/users', to: 'users#index'
+    post '/users/:id', to: 'users#update'
   end
 
   #static pages
