@@ -5,7 +5,7 @@
             <%= @user.name %>
         </h5>
         <p class="card-text"><%= @user.email %></p>
-        <%= render 'follow_form' if logged_in? %>
+        <%= render 'users/follow_form' if logged_in? %>
     </div>
 
     <ul class="list-group list-group-flush">
