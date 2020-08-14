@@ -18,7 +18,6 @@ class Admin::CategoriesController < ApplicationController
       flash[:success] = "You have successfully added a new category!"
       redirect_to admin_categories_url
     else
-      flash[:danger] = "There was some error while trying to create new category. Please try again."
       render 'new'
     end
   end
@@ -35,7 +34,6 @@ class Admin::CategoriesController < ApplicationController
       
       redirect_to admin_categories_url
     else
-      flash[:danger] = "There was some error while trying to update. Please try again."
       render 'edit'
     end
   end

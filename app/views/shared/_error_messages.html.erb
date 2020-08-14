@@ -1,11 +1,10 @@
 <% if object.errors.any? %>
     <div class="alert alert-danger">
-        This form contains errors.
+        <strong>This form contains errors.</strong>
+        <ul>
+            <% object.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
     </div>
-
-    <ul>
-        <% object.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-    </ul>
 <% end %>

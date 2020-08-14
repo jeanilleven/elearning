@@ -28,7 +28,7 @@
                 <tbody class="tbody-white">
                     <% @categories.each do |category| %>
                         <tr>
-                            <th scope="row"><%= category.title %></th>
+                            <th class="vertical-align-center" scope="row"><%= category.title %></th>
                             <td><%= category.description %></td>
                             <td class="d-flex justify-content-center">
                                 <%= button_to edit_admin_category_path(category), method: :get , class: "btn btn-primary action" do %>
