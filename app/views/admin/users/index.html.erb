@@ -20,7 +20,7 @@
                             </div>
                             <div class="col-2 vertical-align-center d-flex justify-content-center">
                             <% if !user.isAdmin %>
-                                <%= button_to "Add", admin_path(user), class: "btn btn-info" %>
+                                <%= button_to "Add", admin_user_path(user), method: :patch, class: "btn btn-info" %>
                             <% end %>
                             </div>
                         </div>
