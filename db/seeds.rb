@@ -45,10 +45,9 @@ followers.each{|follower| follower.follow(user)}
 
 #CATEGORIES
 20.times do |x|
-  c = Faker::ProgrammingLanguage.name
-  n = Faker::ProgrammingLanguage.creator
+  faker = Faker::Color.color_name
   Category.create!(
-    title: c,
-    description: "Programming language created by #{n}"
+    title: faker,
+    description: "Spot everything #{faker}!"
   )
 end
