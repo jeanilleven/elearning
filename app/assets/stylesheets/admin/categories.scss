@@ -1,0 +1,49 @@
+// Place all the styles related to the admin/categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$blue: #c2e4e6;
+$darkblue: #4f7779;
+$taupe: #898b80;
+$cream: #e8e098;
+
+.table thead tr th{
+  color: $darkblue;
+}
+
+.thead-white{
+  background-color: white;
+  color: $darkblue;
+  text-align: center;
+}
+
+.tbody-white{
+  background-color: white;
+  color: $darkblue;
+  border-bottom: 1px solid $blue
+}
+
+.action{
+  margin:10px
+}
+
+.action i{
+  font-size: 1.5em;
+}
+
+.btn-danger{
+  border:2px solid #dc3545 !important;
+}
+.btn-danger:hover{
+  background-color: white !important;
+  border: 2px solid #dc3545 !important;
+  color: #dc3545 !important;
+}
+
+.form-group label{
+  color: $darkblue
+}
+
+.new .form{
+  width: 40%
+}

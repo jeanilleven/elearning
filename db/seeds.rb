@@ -22,7 +22,8 @@ User.create!(
     email: email,
     password: password,
     password_confirmation: password,
-    isAdmin: "0")
+    isAdmin: "0"
+  )
 end
 
 #FOLLOW
@@ -40,3 +41,14 @@ following.each{|followed| user.follow(followed)}
 
 #User1's followers will be (followers = user[3..30])
 followers.each{|follower| follower.follow(user)}
+
+
+#CATEGORIES
+20.times do |x|
+  c = Faker::ProgrammingLanguage.name
+  n = Faker::ProgrammingLanguage.creator
+  Category.create!(
+    title: c,
+    description: "Programming language created by #{n}"
+  )
+end
