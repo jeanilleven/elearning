@@ -20,8 +20,6 @@
             <table class="table">
                 <thead class="thead-white">
                     <tr>
-                        <th>Category ID</th>
-                        <th>ID</th>
                         <th scope="col">Word</th>
                         <th scope="col">Answer</th>
                         <th scope="col">Action</th>
@@ -30,8 +28,6 @@
                 <tbody class="tbody-white">
                     <% @words.each do |word| %>
                         <tr>
-                            <th><%= word.category_id %></th>
-                            <th><%= word.id %></th>
                             <th class="vertical-align-center" scope="row">
                                 <%= word.content %>
                             </th>
