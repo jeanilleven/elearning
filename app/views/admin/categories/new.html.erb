@@ -1,0 +1,17 @@
+<% provide(:title, "New Category") %>
+
+<div class="jumbotron mt-2">
+    <h3 class='text-center usersheader'>Create a New Category</h3>
+    <div class="row new mt-4 d-flex justify-content-center">
+        <div class="form">
+            <div class="container mt-4">
+                <%= render 'form' %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <%= link_to "Back to Category List", admin_categories_path, class: "btn btn-warning" %>
+        </div>
+    </div>
+</div>

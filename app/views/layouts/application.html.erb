@@ -9,7 +9,7 @@
 
     <body>
         <%= render 'layouts/header' %>
-        <div class="container">
+        <div class="container main-container">
             <% if flash.any? %>
                 <% flash.each do |message_type, message| %>
                     <div class = "mt-2 alert alert-<%= message_type %>"><%= message %></div>
@@ -17,7 +17,6 @@
             <% end %>
             <%= yield %>
         </div>
-
-        <%= render 'layouts/footer' %>
+        <%#= render 'layouts/footer' %>
     </body>
 </html>

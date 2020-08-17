@@ -1,0 +1,56 @@
+<% provide(:title, "Categories") %>
+
+<div class="jumbotron mt-2">
+    <h3 class='text-center usersheader'>List of Categories</h3>
+    <div class='mt-2'>
+        <div class="row">
+            <div class="col-lg-4 col-sm-12"></div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="d-flex justify-content-center">
+                    <%= will_paginate @categories %>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 d-flex justify-content-center">
+                <%= link_to "Create New Category", new_admin_category_path, class: "btn btn-primary create-btn" %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover">
+                <thead class="thead-white">
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody-white">
+                    <% @categories.each do |category| %>
+                        <tr>
+                            <th class="vertical-align-center" scope="row"><%= category.title %></th>
+                            <td><%= category.description %></td>
+                            <td class="d-flex justify-content-center">
+                                <%= button_to edit_admin_category_path(category), method: :get , class: "btn btn-primary action" do %>
+                                    <i class='fa fa-pencil-square-o'></i>
+                                <% end %>
+                                <%= button_to admin_category_path(category), method: :delete , class: "btn btn-danger action", 
+                                    data: {confirm: "Are you sure you want to delete this category?"} do %>
+                                        <i class="fa fa-trash-o"></i>
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <%= will_paginate @categories %>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <%= link_to "Back to Admin Dashboard", admin_home_path, class: "btn btn-warning" %>
+        </div>
+    </div>
+</div>
