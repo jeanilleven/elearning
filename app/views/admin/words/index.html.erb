@@ -1,0 +1,64 @@
+<% provide(:title, "Categories") %>
+
+<div class="jumbotron mt-2">
+    <h3 class='text-center usersheader'>Administrate Words</h3>
+    <div class='mt-2'>
+        <div class="row">
+            <div class="col-lg-4 col-sm-12"></div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="d-flex justify-content-center">
+                    <%= will_paginate @words %>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12 d-flex justify-content-center">
+                <%= link_to "Create New Word", new_admin_category_word_path, class: "btn btn-primary create-btn" %>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <table class="table">
+                <thead class="thead-white">
+                    <tr>
+                        <th>Category ID</th>
+                        <th>ID</th>
+                        <th scope="col">Word</th>
+                        <th scope="col">Answer</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody-white">
+                    <% @words.each do |word| %>
+                        <tr>
+                            <th><%= word.category_id %></th>
+                            <th><%= word.id %></th>
+                            <th class="vertical-align-center" scope="row">
+                                <%= word.content %>
+                            </th>
+                            <td>
+                                <%= word.correct_choice.content %>
+                            </td>
+                            <td class="vertical-align-center d-flex justify-content-center">
+                                <%= link_to edit_admin_category_word_path(@category, word), class: "btn btn-primary action" do %>
+                                    <i class='fa fa-pencil-square-o'></i>
+                                <% end %>
+                                <%= button_to admin_category_word_path(@category, word), method: :delete , class: "btn btn-danger action", 
+                                    data: {confirm: "Are you sure you want to delete this word?"} do %>
+                                        <i class="fa fa-trash-o"></i>
+                                 <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <%= will_paginate @words %>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <%= link_to "Back to Category List", admin_categories_path, class: "btn btn-warning" %>
+        </div>
+    </div>
+</div>

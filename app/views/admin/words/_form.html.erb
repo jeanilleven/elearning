@@ -1,0 +1,22 @@
+<%= form_for [:admin, @category, @word ] do |f| %>
+    <%= render 'shared/error_messages',object: f.object %>
+    <div class="form-group">
+        <%= f.label :content, "Word" %>
+        <%= f.text_field :content, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :choices, "Choices" %>
+        <%= f.fields_for :choices do |choices| %>
+            <%= choices.text_field :content, class: "form-control" %>
+            <%= choices.check_box :isCorrect %>
+            <%= choices.label :isCorrect, "Check if this is the correct answer." %>
+        <% end %>
+    </div>
+    <div class="form-group">
+        <% if @word.nil? %>
+            <%= f.submit "Update Word", class: "btn btn-block btn-primary" %>
+        <% else %>
+            <%= f.submit "Create Word", class: "btn btn-block btn-primary" %>
+        <% end %>
+    </div>
+<% end %>

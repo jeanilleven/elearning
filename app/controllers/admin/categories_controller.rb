@@ -8,7 +8,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def new
-    @category = Category.new()
+    @category = Category.new
   end
 
   def create
@@ -31,7 +31,6 @@ class Admin::CategoriesController < ApplicationController
 
     if @category.update(category_params)
       flash[:success] = "You have successfully updated the category!"
-      
       redirect_to admin_categories_url
     else
       render 'edit'
@@ -43,9 +42,9 @@ class Admin::CategoriesController < ApplicationController
 
     if @category.destroy
       flash[:warning] = "You have successfully deleted the category!"
-      redirect_to admin_categories_url
+      redirect_back(fallback_location: root_path)
     else
-      flash[:danger] = "You cannot delete this category!"
+      flash[:danger] = "You cannot delete the category!"
       redirect_back(fallback_location: root_path)
     end
   end

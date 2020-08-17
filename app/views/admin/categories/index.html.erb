@@ -17,7 +17,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <table class="table table-hover">
+            <table class="table">
                 <thead class="thead-white">
                     <tr>
                         <th scope="col">Title</th>
@@ -28,7 +28,9 @@
                 <tbody class="tbody-white">
                     <% @categories.each do |category| %>
                         <tr>
-                            <th class="vertical-align-center" scope="row"><%= category.title %></th>
+                            <th class="vertical-align-center" scope="row">
+                                <%= link_to category.title, admin_category_words_path(category) %>
+                            </th>
                             <td><%= category.description %></td>
                             <td class="d-flex justify-content-center">
                                 <%= button_to edit_admin_category_path(category), method: :get , class: "btn btn-primary action" do %>
