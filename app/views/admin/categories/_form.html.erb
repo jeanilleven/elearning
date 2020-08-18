@@ -9,13 +9,8 @@
         <%= f.text_field :description, class: "form-control" %>
     </div>
 
-    <% if @category.title.nil? %>
-        <div class="form-group">
-            <%= f.submit "Create Category", class: "btn btn-block btn-primary" %>
-        </div>
-    <% else %>
-        <div class="form-group">
-            <%= f.submit "Update Category", class: "btn btn-block btn-primary" %>
-        </div>
-    <% end %>
+    <% x = if @category.title.nil? then "Create Category" else "Update Category" end %>
+    <div class="form-group">
+        <%= f.submit x, class: "btn btn-block btn-primary" %>
+    </div>
 <% end %>
