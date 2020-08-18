@@ -16,7 +16,7 @@
         <%= f.label :password_confirmation, "Confirmation" %>
         <%= f.password_field :password_confirmation, class: "form-control" %>
     </div>
-    <% if logged_in? then x = "Update Profile" %>
+    <% if logged_in?%>
         <div class="form-group">
             <%= f.label :avatar %>
             <div class='d-flex justify-content-left vertical-align-center'>
@@ -24,8 +24,8 @@
                 <%= f.file_field :avatar, accept: "image/jpeg, image/gif, image/png" %>
             </div>
         </div>
-    <% else x = "Create Account" end %>
+    <% end %>
     <div class="form-group">
-        <%= f.submit x, class: "btn btn-block btn-primary form-submit-btn" %>
+        <%= f.submit msg, class: "btn btn-block btn-primary form-submit-btn" %>
     </div>
 <%end%>
