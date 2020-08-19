@@ -69,7 +69,7 @@ words = Word.all
 words.each do |word|
   3.times do |x|
     content = Faker::Color.color_name
-    isCorrect = if x==2 then "1" else "0" end
+    isCorrect = if x==1 then "1" else "0" end
     Choice.create!(
       word_id: word.id,
       content: content,
