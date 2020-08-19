@@ -13,10 +13,6 @@
         <% end %>
     </div>
     <div class="form-group">
-        <% if @word.nil? %>
-            <%= f.submit "Update Word", class: "btn btn-block btn-primary" %>
-        <% else %>
-            <%= f.submit "Create Word", class: "btn btn-block btn-primary" %>
-        <% end %>
+        <%= f.submit msg, class: "btn btn-block btn-primary" %>
     </div>
 <% end %>
