@@ -1,0 +1,5 @@
+<%= form_for [:lesson, @answer] do |f| %>
+    <%= f.hidden_field :choice_id, value: choice.id %>
+    <%= f.hidden_field :word_id, value: choice.word.id %>
+    <%= f.submit choice.content, class: "btn btn-primary" %>
+<% end %>

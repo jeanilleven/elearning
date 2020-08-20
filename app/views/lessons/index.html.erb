@@ -29,7 +29,16 @@
                         </div>
                         <div class="row">
                             <div class="col-12 vertical-align-center start-btn">
-                                <button class= "btn btn-info">Start lesson</button>
+                                <% if answered_category?(current_user, category) %>
+                                    <% lesson = answered_category?(current_user, category) %>
+                                    <%= link_to "Show results", lesson_path(lesson), class: "btn btn-warning" %>
+                                <% else %>
+                                    <%= form_for(@lesson) do |f| %>
+                                        <%= f.hidden_field :category_id, value: category.id %>
+                                        <%= f.hidden_field :user_id, value: current_user.id %>
+                                        <%= f.submit "Start Lesson", class: "btn btn-info" %>
+                                    <% end %>
+                                <% end %>
                             </div>
                         </div>
                     </li>

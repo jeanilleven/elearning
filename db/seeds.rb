@@ -53,27 +53,17 @@ followers.each{|follower| follower.follow(user)}
 end
 
 #WORDS
-categories = Array[1,2,3]
+categories = Category.all 
 categories.each do |c|
-  15.times do |x|
-    faker = Faker::Dessert.variety
-    Word.create!(
-      category_id: c,
-      content: faker
-    )
-  end
+  Word.create!( category_id: c.id, content: "new word" )
+  Word.create!( category_id: c.id, content: "hello" )
+  Word.create!( category_id: c.id, content: "bye" )
 end
 
 #CHOICES
 words = Word.all
 words.each do |word|
-  3.times do |x|
-    content = Faker::Color.color_name
-    isCorrect = if x==1 then "1" else "0" end
-    Choice.create!(
-      word_id: word.id,
-      content: content,
-      isCorrect: isCorrect
-    )
-  end
+  Choice.create!( word_id: word.id, content: "this is the answer", isCorrect: "1" )
+  Choice.create!( word_id: word.id, content: "wrong choice", isCorrect: "0" )
+  Choice.create!( word_id: word.id, content: "Choice 3", isCorrect: "0" )
 end

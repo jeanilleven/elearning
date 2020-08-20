@@ -6,6 +6,8 @@ class Word < ApplicationRecord
 
   has_one :correct_choice, -> { where isCorrect: true }, class_name: "Choice"
 
+  has_one :answer, dependent: :destroy
+
   #validations
   validates :content, presence: true, length: { minimum: 3 }
   validate :has_one_correct_choice
@@ -15,7 +17,7 @@ class Word < ApplicationRecord
     len = choices.select{|choice| choice.isCorrect }.length
     if len > 1
       return errors.add :base, "A Word can contain ONLY ONE correct answer!"
-    elsif len == 0
+    elsif len==0
       return errors.add :base, "A Word SHOULD HAVE ONE correct answer!"
     end
   end
