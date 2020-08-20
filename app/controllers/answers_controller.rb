@@ -12,13 +12,13 @@ class AnswersController < ApplicationController
 
   def create
     @lesson = Lesson.find(params[:lesson_id])
-    @answer = @lesson.answers.build(answer_params)
+    if lesson_finished?(@lesson)
+      calculate_results(@lesson)
+      redirect_to lesson_url(@lesson)
+    else  
+      @answer = @lesson.answers.build(answer_params)
 
-    if @answer.save
-      if lesson_finished?(@lesson)
-        calculate_results(@lesson)
-        redirect_to lesson_url(@lesson)
-      else  
+      if @answer.save
         redirect_to new_lesson_answer_url(@lesson)
       end
     end

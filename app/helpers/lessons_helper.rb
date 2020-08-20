@@ -18,7 +18,7 @@ module LessonsHelper
   def unstarted_lesson 
     if params[:lesson_id].present?
       @lesson = Lesson.find(params[:lesson_id])
-      if lesson_finished?(@lesson)
+      if lesson_finished?(@lesson) 
         flash[:info] = "You already finished this lesson."
         redirect_to lesson_url(@lesson)
       end
