@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
 
   before_action :logged_in_user
+  before_action :lesson_must_exist, only: [ :new ]
   before_action :unstarted_lesson, only: [ :new ]
 
   def new

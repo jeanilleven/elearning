@@ -31,7 +31,11 @@
                             <div class="col-12 vertical-align-center start-btn">
                                 <% if answered_category?(current_user, category) %>
                                     <% lesson = answered_category?(current_user, category) %>
-                                    <%= link_to "Show results", lesson_path(lesson), class: "btn btn-warning" %>
+                                    <% if lesson_finished?(lesson) %>
+                                        <%= link_to "Show results", lesson_path(lesson), class: "btn btn-warning" %>
+                                    <% else %>
+                                        <%= link_to "Continue", new_lesson_answer_path(lesson), class: "btn btn-secondary" %>
+                                    <% end %>
                                 <% else %>
                                     <%= form_for(@lesson) do |f| %>
                                         <%= f.hidden_field :category_id, value: category.id %>

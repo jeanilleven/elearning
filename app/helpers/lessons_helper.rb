@@ -28,4 +28,18 @@ module LessonsHelper
   def answered_category?(user, category)
     return Lesson.find_by(category_id: category.id, user_id: user.id)
   end
+
+  def finished_lesson
+    lesson = Lesson.find(params[:id])
+    if !lesson_finished?(lesson)
+      flash[:danger] = "This result can still change. You can still continue answering this lesson. "
+    end
+  end
+
+  def lesson_must_exist
+    if Lesson.find_by(id: params[:lesson_id]).nil?
+      flash[:danger] = "This lesson has not been initiated. You may start taking a lesson by choosing from the categories below."
+      redirect_to categories_url
+    end
+  end
 end
