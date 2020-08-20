@@ -8,7 +8,10 @@ class User < ApplicationRecord
   has_many :passive_relationships, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
-    #Validations
+    #FOR LESSONS
+  has_many :lessons, dependent: :destroy  
+  
+  #Validations
   validates :name, presence: true, length: { minimum: 3 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

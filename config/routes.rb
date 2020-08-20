@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   #user pages
   get 'signup', to: 'users#new'
   resources :users
+
+  #lesson pages
+  resources :lessons, only: [:index, :new, :create, :show]
+  get '/categories', to: 'lessons#index'
   
   #session pages
   get '/login', to: 'sessions#new'
