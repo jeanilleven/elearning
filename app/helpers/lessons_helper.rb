@@ -37,7 +37,7 @@ module LessonsHelper
   end
 
   def lesson_must_exist
-    if Lesson.find_by(id: params[:lesson_id]).nil?
+    if Lesson.find_by(id: params[:id]).nil?
       flash[:danger] = "This lesson has not been initiated. You may start taking a lesson by choosing from the categories below."
       redirect_to categories_url
     end

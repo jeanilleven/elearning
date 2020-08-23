@@ -23,7 +23,7 @@ class Word < ApplicationRecord
   end
 
   def unique_choices
-    if choices.select{|x| choices}.uniq {|c| [c.content.downcase]}.length < choices.length
+    if choices.uniq {|c| [c.content.downcase]}.length < choices.length
       return errors.add :base, "Choices should be unique."
     end
   end
