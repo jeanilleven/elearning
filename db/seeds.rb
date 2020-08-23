@@ -45,10 +45,9 @@ followers.each{|follower| follower.follow(user)}
 
 #CATEGORIES
 20.times do |x|
-  faker = Faker::Color.color_name
   Category.create!(
-    title: faker,
-    description: "Spot everything #{faker}!"
+    title: "Category #{x+1}",
+    description: "This is Category #{x+1}. Spot the correct answer by choosing from the choices."
   )
 end
 

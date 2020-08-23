@@ -4,12 +4,15 @@ module AnswersHelper
   end
 
   def unanswered_word(lesson)
+    x = nil
     lesson.category.words.each do |word|
-      x = word
       if unanswered?(word)
-        return x
+        x = word
+        break
       end
     end
+
+    return x
   end
 
   def count_answers(lesson)

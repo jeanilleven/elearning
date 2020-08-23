@@ -1,7 +1,9 @@
 class LessonsController < ApplicationController
 
   before_action :logged_in_user
-  before_action :lesson_must_exist, only: [ :show ]
+  before_action only: [ :show ] do 
+    lesson_exists(params[:id])
+  end
   before_action :unstarted_lesson, only: [ :new ]
   before_action :finished_lesson, only: [ :show ]
 

@@ -12,14 +12,14 @@ module LessonsHelper
   end
 
   def lesson_finished?(lesson)
-    lesson.category.words.count==lesson.answers.count
+    lesson.category.words.count == lesson.answers.count
   end
 
   def unstarted_lesson 
     if params[:lesson_id].present?
       @lesson = Lesson.find(params[:lesson_id])
       if lesson_finished?(@lesson) 
-        flash[:info] = "You already finished this lesson."
+        flash[:info] = "Good job for finishing this lesson!"
         redirect_to lesson_url(@lesson)
       end
     end
@@ -36,8 +36,8 @@ module LessonsHelper
     end
   end
 
-  def lesson_must_exist
-    if Lesson.find_by(id: params[:id]).nil?
+  def lesson_exists(id)
+    if Lesson.find_by(id: id).nil?
       flash[:danger] = "This lesson has not been initiated. You may start taking a lesson by choosing from the categories below."
       redirect_to categories_url
     end
