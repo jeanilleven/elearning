@@ -19,7 +19,7 @@ module LessonsHelper
     if params[:lesson_id].present?
       @lesson = Lesson.find(params[:lesson_id])
       if lesson_finished?(@lesson) 
-        flash[:info] = "Good job for finishing this lesson!"
+        flash[:success] = "Good job for finishing this lesson!"
         redirect_to lesson_url(@lesson)
       end
     end
@@ -41,5 +41,10 @@ module LessonsHelper
       flash[:danger] = "This lesson has not been initiated. You may start taking a lesson by choosing from the categories below."
       redirect_to categories_url
     end
+  end
+
+  def user_answer(lesson, word)
+    answer = lesson.answers.select{ |answer| answer.word_id == word.id }
+    return Choice.find(answer[0][:choice_id])
   end
 end

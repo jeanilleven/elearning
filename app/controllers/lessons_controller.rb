@@ -6,6 +6,7 @@ class LessonsController < ApplicationController
   end
   before_action :unstarted_lesson, only: [ :new ]
   before_action :finished_lesson, only: [ :show ]
+  before_action :correct_user, only: [ :show ]
 
   def index
     @categories = Category.paginate(page: params[:page], per_page: 12)
@@ -25,11 +26,18 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
-    calculate_results(@lesson)
   end
 
   private
     def lesson_params
       params.require(:lesson).permit(:user_id, :category_id, :result)
+    end
+
+    def correct_user
+      lesson = Lesson.find(params[:id])
+      if lesson.user_id != current_user.id
+        flash[:danger] = "You are unauthorized to view the page. The result of that lesson does not belong to you."
+        redirect_to categories_url
+      end
     end
 end
