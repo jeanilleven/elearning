@@ -26,6 +26,7 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find(params[:id])
+    @words = @lesson.category.words.paginate(page: params[:page], per_page: 10)
   end
 
   private

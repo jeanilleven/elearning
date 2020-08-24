@@ -10,6 +10,9 @@
             <div class="col-12 d-flex justify-content-center mt-1">
                 <p>You got <strong><%= @lesson.result %></strong>&nbsp;out of <%= @lesson.category.words.count %></p>
             </div>
+            <div class="col-12 d-flex justify-content-center mt-2">
+                <%= will_paginate @words %>
+            </div>
         </div>
     </div>
     <div class="row mt-2">
@@ -24,19 +27,19 @@
                     </tr>
                 </thead>
                 <tbody class="tbody-white">
-                    <% @lesson.category.words.each do |word| %>
+                    <% @words.each do |word| %>
                         <% answer = user_answer(@lesson, word) %>
                         <tr>
-                            <th><%= word.content %></th>
-                            <th><%= answer.content %></th>
-                            <th><%= word.correct_choice.content %></th>
-                            <th class="d-flex justify-content-center">
+                            <td class="text-align-center"><%= word.content %></td>
+                            <td class="text-align-center"><%= answer.content %></td>
+                            <td class="text-align-center"><%= word.correct_choice.content %></td>
+                            <td class="d-flex justify-content-center">
                                 <% if answer.id == word.correct_choice.id %>
                                     <i class="fa fa-check-circle-o checkmark"></i>
                                 <% else %>
                                     <i class="fa fa-times-circle-o xmark"></i>
                                 <% end %>
-                            </th>
+                            </td>
                         </tr>
                     <% end %>
                 </tbody>
