@@ -19,4 +19,15 @@
             </div>
         </li>
     </ul>
+
+    <% if @user.id == current_user.id %>
+        <div class="row mt-2">
+            <div class="col-12 d-flex justify-content-center">
+                <strong><%= words_learned(current_user) %></strong><br>
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+                <p>Words Learned</p>
+            </div>
+        </div> 
+    <% end %>
 </div>
