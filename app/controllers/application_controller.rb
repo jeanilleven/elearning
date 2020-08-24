@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-
+  include AnswersHelper
+  include LessonsHelper
+  
   def logged_in_user
     unless logged_in?
       flash[:danger] = "Please login first."

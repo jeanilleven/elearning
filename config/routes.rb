@@ -18,8 +18,10 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   resources :users
 
-  #lesson pages
-  resources :lessons, only: [:index, :new, :create, :show]
+  #lesson and answer pages
+  resources :lessons, only: [ :new, :create, :show, :index ] do
+    resources :answers, only: [ :new, :index, :show, :create ]
+  end
   get '/categories', to: 'lessons#index'
   
   #session pages

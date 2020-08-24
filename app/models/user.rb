@@ -9,7 +9,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
     #FOR LESSONS
-  has_many :lessons, dependent: :destroy  
+  has_many :lessons, dependent: :destroy
+  has_many :answers, through: :lessons  
   
   #Validations
   validates :name, presence: true, length: { minimum: 3 }

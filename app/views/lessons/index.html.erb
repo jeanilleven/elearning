@@ -13,7 +13,7 @@
                     <li class="user">
                         <div class="row">
                             <div class="col-8 user-name d-flex justify-content-left">
-                                <h4><%= category.title %></h4>
+                                <h5><%= category.title %></h5>
                             </div>
                             <div class="col-4">
                                 <div class="float-right">
@@ -29,7 +29,20 @@
                         </div>
                         <div class="row">
                             <div class="col-12 vertical-align-center start-btn">
-                                <button class= "btn btn-info">Start lesson</button>
+                                <% if answered_category?(current_user, category) %>
+                                    <% lesson = answered_category?(current_user, category) %>
+                                    <% if lesson_finished?(lesson) %>
+                                        <%= link_to "Show results", lesson_path(lesson), class: "btn btn-warning" %>
+                                    <% else %>
+                                        <%= link_to "Continue", new_lesson_answer_path(lesson), class: "btn btn-secondary" %>
+                                    <% end %>
+                                <% else %>
+                                    <%= form_for(@lesson) do |f| %>
+                                        <%= f.hidden_field :category_id, value: category.id %>
+                                        <%= f.hidden_field :user_id, value: current_user.id %>
+                                        <%= f.submit "Start Lesson", class: "btn btn-info" %>
+                                    <% end %>
+                                <% end %>
                             </div>
                         </div>
                     </li>

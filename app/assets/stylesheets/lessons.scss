@@ -11,3 +11,15 @@
 .start-btn{
   text-align: right;
 }
+
+.btn-secondary{
+  background-color: rgb(36, 160, 129) !important;
+  border: 2px solid rgb(36, 160, 129) !important;
+  color: white !important
+}
+
+.btn-secondary:hover{
+  color: rgb(36, 160, 129) !important;
+  border: 2px solid rgb(36, 160, 129) !important;
+  background-color: white !important
+}
