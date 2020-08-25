@@ -4,4 +4,5 @@ class Lesson < ApplicationRecord
 
   has_many :answers, dependent: :destroy
   has_many :words, through: :category
+  
 end

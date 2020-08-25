@@ -23,7 +23,7 @@
     <% if @user.id == current_user.id %>
         <div class="row mt-2">
             <div class="col-12 d-flex justify-content-center">
-                <strong><%= words_learned(current_user) %></strong><br>
+                <strong><%= link_to words_learned(current_user), words_path %></strong><br>
             </div>
             <div class="col-12 d-flex justify-content-center">
                 <p>Words Learned</p>

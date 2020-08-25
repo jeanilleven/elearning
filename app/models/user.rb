@@ -10,7 +10,8 @@ class User < ApplicationRecord
 
     #FOR LESSONS
   has_many :lessons, dependent: :destroy
-  has_many :answers, through: :lessons  
+  has_many :answers, through: :lessons
+    
   
   #Validations
   validates :name, presence: true, length: { minimum: 3 }

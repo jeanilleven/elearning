@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     end
   end
 
+  #for showing results
+  get 'words', to: 'words#show'
+
   #static pages
   root 'static_pages#home'
   get 'about', to: 'static_pages#about'
