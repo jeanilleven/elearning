@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
+  require 'will_paginate/array'
   include SessionsHelper
   include AnswersHelper
   include LessonsHelper
+  include WordsHelper
   
   def logged_in_user
     unless logged_in?
