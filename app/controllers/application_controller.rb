@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include AnswersHelper
   include LessonsHelper
   include WordsHelper
+  include UsersHelper
   
   def logged_in_user
     unless logged_in?

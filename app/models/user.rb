@@ -11,7 +11,9 @@ class User < ApplicationRecord
     #FOR LESSONS
   has_many :lessons, dependent: :destroy
   has_many :answers, through: :lessons
-    
+  
+    #FOR ACTIVITY
+  has_many :activities, dependent: :destroy 
   
   #Validations
   validates :name, presence: true, length: { minimum: 3 }

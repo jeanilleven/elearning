@@ -6,7 +6,7 @@
         <h5 class="card-title">
             <%= @user.name %>
         </h5>
-        <%= link_to 'Admin Page', admin_home_path, class: "btn btn-info" if logged_in? && current_user.isAdmin %>
+        <%= link_to 'Admin Page', admin_home_path, class: "btn btn-info" if logged_in? && current_user.isAdmin && current_user == @user%>
         <p class="card-text"><%= @user.email %></p>
         <%= render 'users/follow_form' if logged_in? %>
     </div>

@@ -1,4 +1,21 @@
-<% provide(:title, 'About Us') %>
+<% provide(:title, "About Us") %>
 
-<h1>StaticPages#about</h1>
-<p>Find me in app/views/static_pages/about.html.erb</p>
+<div class="row mt-4">
+
+        
+    <div class="media text-darkblue">
+        <div class="media-body p-3">
+            <h5 class="mt-0 mb-1">About Us</h5>
+            <p class="about-content">Hi. This web application was made solely for educational purposes only. 
+               The development of this project started wayback August 5, 2020. This is 
+               a basic E-Learning System that can give you quizzes through multiple choices.
+               As an admin, only you are privileged to create Categories. Moreover, you can also make other
+               users as admin. As a User, you can take as many lessons as you can. At the end, you can view your
+               results. You can also follow other users and see their progress and inspire yourself to do better.
+               You can not retake a lesson, unfortunately. But who knows, that feature may be available
+               in future developments.
+            </p>
+        </div>
+        <%= image_tag("study.jpg") %>
+    </div>
+</div>
