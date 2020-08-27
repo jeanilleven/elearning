@@ -13,45 +13,53 @@
 
     <ul class="userlist">
         <div class="row">
-            <% @categories.each do |category| %>
-                <div class="col-lg-4 col-sm-12 d-flex justify-content-center">
-                    <li class="user">
-                        <div class="row">
-                            <div class="col-8 user-name d-flex justify-content-left">
-                                <h5><%= category.title %></h5>
-                            </div>
-                            <div class="col-4">
-                                <div class="float-right">
-                                    <%= category.words.count %>&nbsp;Words
+            <% if @categories.empty? %>
+                <li class="list-group-item">
+                    <p class="text-black-50 font-italic vertical-align-center">
+                        You didn't start any lesson yet.
+                    </p>
+                </li>
+            <% else%>
+                <% @categories.each do |category| %>
+                    <div class="col-lg-4 col-sm-12 d-flex justify-content-center">
+                        <li class="user">
+                            <div class="row">
+                                <div class="col-8 user-name d-flex justify-content-left">
+                                    <h5><%= category.title %></h5>
+                                </div>
+                                <div class="col-4">
+                                    <div class="float-right">
+                                        <%= category.words.count %>&nbsp;Words
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="divider"></div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p><%= category.description %></p>
                                 </div>
                             </div>
-                        </div> 
-                        <div class="divider"></div>
-                        <div class="row">
-                            <div class="col-12">
-                                <p><%= category.description %></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 vertical-align-center start-btn">
-                                <% if answered_category?(current_user, category) %>
-                                    <% lesson = answered_category?(current_user, category) %>
-                                    <% if lesson_finished?(lesson) %>
-                                        <%= link_to "Show results", lesson_path(lesson), class: "btn btn-warning" %>
+                            <div class="row">
+                                <div class="col-12 vertical-align-center start-btn">
+                                    <% if answered_category?(current_user, category) %>
+                                        <% lesson = answered_category?(current_user, category) %>
+                                        <% if lesson_finished?(lesson) %>
+                                            <%= link_to "Show results", lesson_path(lesson), class: "btn btn-warning" %>
+                                        <% else %>
+                                            <%= link_to "Continue", new_lesson_answer_path(lesson), class: "btn btn-secondary" %>
+                                        <% end %>
                                     <% else %>
-                                        <%= link_to "Continue", new_lesson_answer_path(lesson), class: "btn btn-secondary" %>
+                                        <%= form_for(@lesson) do |f| %>
+                                            <%= f.hidden_field :category_id, value: category.id %>
+                                            <%= f.hidden_field :user_id, value: current_user.id %>
+                                            <%= f.submit "Start Lesson", class: "btn btn-info" %>
+                                        <% end %>
                                     <% end %>
-                                <% else %>
-                                    <%= form_for(@lesson) do |f| %>
-                                        <%= f.hidden_field :category_id, value: category.id %>
-                                        <%= f.hidden_field :user_id, value: current_user.id %>
-                                        <%= f.submit "Start Lesson", class: "btn btn-info" %>
-                                    <% end %>
-                                <% end %>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </div>
+                        </li>
+                    </div>
+                <% end %>
             <% end %>
         </div>
     </ul>
