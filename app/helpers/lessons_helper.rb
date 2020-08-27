@@ -48,3 +48,31 @@ module LessonsHelper
     return Choice.find(answer[0][:choice_id])
   end
 end
+
+def finished_lessons(user)
+  l = []
+
+  categories = Category.all
+  categories.each do |category|
+    lesson = Lesson.find_by(category_id: category.id, user_id: user.id)
+
+    if lesson.present? && lesson.answers.count == lesson.words.count 
+      l.push(category)
+    end
+  end
+  return l
+end
+
+def unfinished_lessons(user)
+  l = []
+
+  categories = Category.all
+  categories.each do |category|
+    lesson = Lesson.find_by(category_id: category.id, user_id: user.id)
+
+    if lesson.present? && lesson.answers.count != lesson.words.count || lesson.nil?
+      l.push(category)
+    end
+  end
+  return l
+end
