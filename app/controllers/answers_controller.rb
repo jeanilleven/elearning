@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
 
   def new
     @lesson = Lesson.find(params[:lesson_id])
-
+    calculate_results(@lesson)
     @answer = @lesson.answers.build
     @word = unanswered_word(@lesson)
   end
