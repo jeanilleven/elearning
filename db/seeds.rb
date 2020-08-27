@@ -36,33 +36,24 @@ following = users[2..50]
 #User1 has followers starting from User3 to User30
 followers = users[3..30]
 
-#User1 will follow (following = users[2..50])
-following.each{|followed| user.follow(followed)}
-
-#User1's followers will be (followers = user[3..30])
-followers.each{|follower| follower.follow(user)}
+following.each{|followed| user.follow(followed).create_activity(user: user)}
+followers.each{|follower| follower.follow(user).create_activity(user: follower)}
 
 
 #CATEGORIES
-20.times do |x|
-  Category.create!(
-    title: "Category #{x+1}",
-    description: "This is Category #{x+1}. Spot the correct answer by choosing from the choices."
-  )
-end
+20.times do |n|
+  title = Faker::Name.unique.name
+  description =  "Lorem Epsum"
+  Category.create!(title: title,description: description)
 
-#WORDS
-categories = Category.all 
-categories.each do |c|
-  Word.create!( category_id: c.id, content: "new word" )
-  Word.create!( category_id: c.id, content: "hello" )
-  Word.create!( category_id: c.id, content: "bye" )
-end
-
-#CHOICES
-words = Word.all
-words.each do |word|
-  Choice.create!( word_id: word.id, content: "this is the answer", isCorrect: "1" )
-  Choice.create!( word_id: word.id, content: "wrong choice", isCorrect: "0" )
-  Choice.create!( word_id: word.id, content: "Choice 3", isCorrect: "0" )
+  10.times do
+    content = Faker::Lorem.word
+    word = Category.all.sample.words.build content: content
+    word.choices = [
+      Choice.new(content: content, isCorrect: true),
+      Choice.new(content: Faker::Music.instrument, isCorrect: false),
+      Choice.new(content: Faker::Music.chord, isCorrect: false)
+    ].shuffle
+    word.save(validate: false)
+  end
 end

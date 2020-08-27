@@ -1,0 +1,45 @@
+<div class="card mt-2 activity-card">
+    <div class="card-body text-align-center">
+        <h3 class="card-title">
+            Activity Feed
+        </h3>
+    </div>
+    <div class="d-flex justify-content-center">
+        <%= will_paginate @activities %>
+    </div>
+</div>
+
+<ul class="list-group mt-2 activity-card">
+    <% if @activities.empty? %>
+        <li class="list-group-item">
+            <p class="text-black-50 font-italic vertical-align-center">
+                This user is rather lazy, and does not have any activities yet.
+            </p>
+        </li>
+    <% else %>
+        <% @activities.each do |activity| %>
+            <li class="list-group-item">
+                <% person = User.find(activity.user_id) %>
+                <%= user_avatar(person, "dp") %>
+                <% if activity.action_type == "Lesson" %>
+                    <% lesson = Lesson.find_by_id(activity.action_id) %>
+                    <strong><%= link_to person.name, user_path(person), class: "text-primary"%></strong>
+                    &nbsp;learned <%= lesson.result %> out of <%= lesson.category.words.count %> in 
+                    <strong><%= link_to lesson.category.title, lesson_path(lesson.id), class: "text-primary" %></strong>
+                <% else %>
+                    <% followed = find_relationship(activity.action_id) %>
+                    <strong><%= link_to person.name, user_path(person), class: "text-primary" %></strong>
+                    &nbsp;followed&nbsp;
+                    <strong><%= link_to followed.name, user_path(followed), class: "text-primary" %></strong>
+                <% end %>
+                <p class="float-right text-black-50 font-italic">
+                    <%= time_ago_in_words(activity.created_at) %> ago
+                </p>
+            </li>
+        <% end %>
+    <% end %>
+</ul>
+
+<div class="d-flex justify-content-center">
+    <%= will_paginate @activities %>
+</div>

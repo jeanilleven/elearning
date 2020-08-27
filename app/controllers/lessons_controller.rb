@@ -20,6 +20,8 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new(lesson_params)
 
     if @lesson.save
+      user = User.find(@lesson.user_id)
+      @lesson.create_activity(user: user)
       redirect_to new_lesson_answer_url(@lesson)
     end
   end
