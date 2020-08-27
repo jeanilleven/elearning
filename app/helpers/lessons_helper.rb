@@ -19,7 +19,7 @@ module LessonsHelper
     if params[:lesson_id].present?
       @lesson = Lesson.find(params[:lesson_id])
       if lesson_finished?(@lesson) 
-        flash[:success] = "Good job for finishing this lesson!"
+        flash[:info] = "Good job for finishing this lesson!"
         redirect_to lesson_url(@lesson)
       end
     end
@@ -46,5 +46,33 @@ module LessonsHelper
   def user_answer(lesson, word)
     answer = lesson.answers.select{ |answer| answer.word_id == word.id }
     return Choice.find(answer[0][:choice_id])
+  end
+
+  def finished_lessons(user)
+    l = []
+
+    categories = Category.all
+    categories.each do |category|
+      lesson = Lesson.find_by(category_id: category.id, user_id: user.id)
+
+      if lesson.present? && lesson.answers.count == lesson.words.count 
+        l.push(category)
+      end
+    end
+    return l
+  end
+
+  def unfinished_lessons(user)
+    l = []
+
+    categories = Category.all
+    categories.each do |category|
+      lesson = Lesson.find_by(category_id: category.id, user_id: user.id)
+
+      if lesson.present? && lesson.answers.count != lesson.words.count || lesson.nil?
+        l.push(category)
+      end
+    end
+    return l
   end
 end
