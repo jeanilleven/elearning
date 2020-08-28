@@ -1,3 +1,20 @@
 // Place all the styles related to the answers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$darkblue: #4f7779;
+
+.answer-submit-btn{
+  background-color: $darkblue !important;
+  color: white !important;
+  border: 2px solid $darkblue !important;
+  width: 200px;
+  height:50px;
+}
+
+ 
+.answer-submit-btn:hover{
+  background-color: white !important;
+  color: $darkblue !important
+}

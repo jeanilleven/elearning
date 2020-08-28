@@ -1,17 +1,99 @@
 <% provide(:title, 'Home') %>
 
-<div class="row mt-4 home-row">
-    <div class='col-12 d-flex justify-content-center vertical-align-center'>
-        <div class="card mt-2">
-            <div class="card-body text-align-center">
-                <h5 class="card-title text-darkblue">
-                    E-Learning System
-                </h5>
-                <p class="card-text text-darkblue">
-                    Wisdom comes not from age, but from education and learning.
-                    Start learning with us now!
-                </p>
-                 <%= image_tag("home-student-card.png", class: "card-pic") %>
+<div class="row home-row mt-4 ">
+    <div class="col-lg-6 col-sm-12">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 mt-2 d-flex justify-content-center">
+                <h2 class="home-title ">Start learning with us now!</h2>
+            </div>
+            <div class="col-12 mt-3 d-flex justify-content-center">
+                <h5>“If you think education is expensive, try ignorance.”</h5>
+            </div>
+            <div class="col-12 margin-top-4 d-flex justify-content-center">
+                <%= link_to "Sign Up", new_user_path, class: "btn btn-primary form-submit-btn mt-4" %>
+                <%= link_to "Login", new_session_path, class: "btn btn-primary form-submit-btn mt-4" %>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-sm-12 mt-4">
+        <img src="https://colorlib.com/preview/theme/landerz/images/landing_1.png" class="home-pic">
+    </div>
+</div>
+<div class="row home-row mt-4 d-flex justify-content-center">
+    <div class="jumbotron home-row d-flex justify-content-center mt-4">
+        <h3>FEATURES</h3>
+    </div>
+    <div class="row d-flex justify-content-center p-4">
+        <div class="col-lg-4 col-sm-12 d-flex justify-content-center mt-1">
+            <div class="card">
+                <div class="text-align-center vertical-align-center home-icon">
+                    <i class="fa fa-cog"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-align-center">ADMINISTRATION</h5>
+                    <p class="card-text text-align-justify">
+                        Admin can manage the users and categories that will be taken as lessons by the students.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-12 d-flex justify-content-center mt-1">
+            <div class="card">
+                <div class="text-align-center vertical-align-center home-icon">
+                    <i class="fa fa-book "></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-align-center">LESSONS</h5>
+                    <p class="card-text text-align-justify">
+                        All users may be able to take unlimited lessons and view their results afterwards.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-12 d-flex justify-content-center mt-1">
+            <div class="card">
+                <div class="text-align-center vertical-align-center home-icon">
+                    <i class="fa fa-camera "></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-align-center">AVATAR</h5>
+                    <p class="card-text text-align-justify">
+                        All users can upload their own picture for easier identification. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row home-row mt-4 d-flex justify-content-center">
+    <div class="jumbotron home-row d-flex justify-content-center mt-4">
+        <h3>USER TYPES</h3>
+    </div>
+    <div class="row d-flex justify-content-center p-4">
+        <div class="col-lg-6 col-sm-12 d-flex justify-content-center mt-1">
+            <div class="card">
+                <div class="text-align-center vertical-align-center home-icon">
+                    <i class="fa fa-superpowers"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-align-center">ADMIN</h5>
+                    <p class="card-text text-align-justify">
+                        An Admin can add, update, delete a lesson categories. He can also make a normal user to a co-admin.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12 d-flex justify-content-center mt-1">
+            <div class="card">
+                <div class="text-align-center vertical-align-center home-icon">
+                    <i class="fa fa-user-circle "></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-align-center">USER</h5>
+                    <p class="card-text text-align-justify">
+                        Users can take lessons, follow other users and view their results.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
