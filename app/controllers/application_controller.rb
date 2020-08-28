@@ -19,4 +19,11 @@ class ApplicationController < ActionController::Base
       redirect_to user_url(current_user.id)
     end
   end
+
+  def existing_users_only
+    if User.find_by_id(params[:id]).nil?
+      flash[:danger] = "That user does not exist."
+      redirect_to root_url
+    end
+  end
 end

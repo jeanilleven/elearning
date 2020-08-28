@@ -3,11 +3,11 @@
 <div class="card mt-2 profile-card">
     <div class="card-body text-align-center">
         <%= user_avatar(@user, "profile-pic") %>
-        <h5 class="card-title">
+        <h5 class="card-title mt-3">
             <%= @user.name %>
         </h5>
         <%= link_to 'Admin Page', admin_home_path, class: "btn btn-info" if logged_in? && current_user.isAdmin && current_user == @user%>
-        <p class="card-text"><%= @user.email %></p>
+        <p class="card-text mt-2"><%= @user.email %></p>
         <%= render 'users/follow_form' if logged_in? %>
     </div>
 

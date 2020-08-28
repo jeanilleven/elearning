@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
-  before_action :correct_user, only: [:edit, :update]
-  before_action :logged_in_user, only: [:index, :edit, :update, :show]
+  before_action :correct_user, only: [ :edit, :update ]
+  before_action :logged_in_user, only: [ :index, :edit, :update, :show ]
+  before_action :existing_users_only, only: [ :show, :edit ]
 
   def index
     if !logged_in?

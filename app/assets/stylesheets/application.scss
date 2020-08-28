@@ -16,10 +16,14 @@
  @import "bootstrap";
  @import "font-awesome";
  
- $blue: #c2e4e6;
+ $blue: #c8eff1c9;
  $darkblue: #4f7779;
  $taupe: #898b80;
  $cream: #e8e098;
+
+ *{
+   color: $darkblue
+ }
  
 .navbutton{
   border-radius: 5px;
@@ -42,11 +46,11 @@
 }
 
 .form-container{
-  width: 50%;
+  width: 40%;
 }
 
 .form-submit-btn{
-  width: 35% !important; 
+  width: 40% !important; 
   margin: auto !important;
 }
 
@@ -197,3 +201,6 @@ footer{
   color: $darkblue !important;
 }
 
+.page-item.active .page-link{
+  background-color: $blue
+}
