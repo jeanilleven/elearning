@@ -9,8 +9,16 @@ class LessonsController < ApplicationController
   before_action :correct_user, only: [ :show ]
 
   def index
-    @categories = Category.paginate(page: params[:page], per_page: 12)
     @lesson = Lesson.new
+    status = params[:status] if params[:status].present?
+    
+  
+    if status.present?
+      @categories = finished_lessons(current_user).paginate(page: params[:page], per_page: 12) if status=="1"
+      @categories = unfinished_lessons(current_user).paginate(page: params[:page], per_page: 12) if status=="0"
+    else  
+      @categories = Category.paginate(page: params[:page], per_page: 12)
+    end
   end
 
   def new
