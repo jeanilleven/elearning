@@ -11,3 +11,9 @@ development:
 test:
   <<: *default
   database: elearning_test
+
+production:
+  <<: *default
+  database: elearning_production
+  username: elearning
+  password: <%= ENV['ELEARNING_DATABASE_PASSWORD'] %>
